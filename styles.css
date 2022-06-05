@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.grid > div {
+    background: steelblue;
+    border: solid 2px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+}
