@@ -9,6 +9,7 @@ let gameBoard = (function() {
     const x = "x";
     const o = "o";
     let currentPlayer = x;
+    let winner = false;
 
     function drawBoard() {
         grid.innerHTML = '';
@@ -34,32 +35,37 @@ let gameBoard = (function() {
         winCombos = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [6,4,2], [8,4,0]];
         for (let i=0;i<winCombos.length;i++) {
             if (boardArray[winCombos[i][0]] === player && boardArray[winCombos[i][1]] === player && boardArray[winCombos[i][2]] === player ) {
-                playerDisplay.textContent = "YOYOYOYOO";
-                freezeBoard();
+                playerDisplay.textContent = player + " wins!!!";
+                return winner = true;
             } 
         }
-    }
-
-    function freezeBoard() {
-        console.log("Yeah")
     }
 
     function displayMove() {
         grid.addEventListener("click", function(e) {
             pushIndex = e.target.id;
-            if (boardArray[pushIndex] === "") {
+            if (boardArray[pushIndex] === "" && !winner) {
                 boardArray[pushIndex] = currentPlayer;
                 console.log(boardArray);
                 drawBoard();
-                checkWinner(currentPlayer);
-                playerSwitch(currentPlayer);
+                if (!checkWinner(currentPlayer) && !tieCheck(boardArray)) {
+                    playerSwitch(currentPlayer);
+                } else if (!checkWinner(currentPlayer)) {
+                    tieCheck(boardArray);
+                }
             } else {
                 return;
-             }
+            }
         });
     } 
 
-    
+    function tieCheck(array) {
+        if (array.includes("")) {
+            return false;
+        } else {
+            return playerDisplay.textContent = "Tie game! Please play again.";
+        }
+    }
 
     return drawBoard(), displayMove();
 
