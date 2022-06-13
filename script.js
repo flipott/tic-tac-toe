@@ -1,5 +1,8 @@
 const grid = document.querySelector(".grid");
 const playerDisplay = document.querySelector(".player-display")
+const firstPlayer = document.getElementById('first-player').value;
+const secondPlayer = document.getElementById('second-player').value;
+const gameBtn = document.getElementById('game-btn');
 
 let gameBoard = (function() {
     // 0 1 2
@@ -41,7 +44,23 @@ let gameBoard = (function() {
         }
     }
 
+    function preGame() {
+        gameBtn.addEventListener("click", function() {
+            if (gameBtn.textContent === "Start Game") {
+                displayMove();
+                return;
+            } else {
+                boardArray = ['', '', '', '', '', '', '', '', '']
+                gameBtn.textContent = "Start Game";
+                drawBoard();
+                return
+            }
+        });
+    }
+
+
     function displayMove() {
+        gameBtn.textContent = "Restart game";
         grid.addEventListener("click", function(e) {
             pushIndex = e.target.id;
             if (boardArray[pushIndex] === "" && !winner) {
@@ -67,7 +86,7 @@ let gameBoard = (function() {
         }
     }
 
-    return drawBoard(), displayMove();
+    return drawBoard(), preGame();
 
 
 })();
