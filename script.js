@@ -1,6 +1,5 @@
 const grid = document.querySelector(".grid");
 const playerDisplay = document.querySelector(".player-display")
-const firstPlayer = document.getElementById('first-player').value;
 const secondPlayer = document.getElementById('second-player').value;
 const gameBtn = document.getElementById('game-btn');
 
@@ -11,8 +10,16 @@ let gameBoard = (function() {
     let boardArray = ['', '', '', '', '', '', '', '', '']
     const x = "x";
     const o = "o";
-    let currentPlayer = x;
     let winner = false;
+
+    const playerCreate = (name, position) => {
+        return { name, position };
+    }
+
+
+    let currentPlayer = x;
+
+
 
     function drawBoard() {
         grid.innerHTML = '';
@@ -47,12 +54,20 @@ let gameBoard = (function() {
     function preGame() {
         gameBtn.addEventListener("click", function() {
             if (gameBtn.textContent === "Start Game") {
+                let customPlayerOne  = playerCreate(document.getElementById('first-player').value, x);
+                let customPlayerTwo = playerCreate(document.getElementById('second-player').value, o);
+                console.log(customPlayerOne);
+                console.log(customPlayerTwo);
                 displayMove();
+                playerDisplay.textContent = "It is Player 1's (x) turn.";
                 return;
             } else {
                 boardArray = ['', '', '', '', '', '', '', '', '']
                 gameBtn.textContent = "Start Game";
+                currentPlayer = x;
+                winner = false;
                 drawBoard();
+                playerDisplay.textContent = "";
                 return
             }
         });
@@ -63,7 +78,7 @@ let gameBoard = (function() {
         gameBtn.textContent = "Restart game";
         grid.addEventListener("click", function(e) {
             pushIndex = e.target.id;
-            if (boardArray[pushIndex] === "" && !winner) {
+            if (boardArray[pushIndex] === "" && !winner && gameBtn.textContent !== "Start Game") {
                 boardArray[pushIndex] = currentPlayer;
                 console.log(boardArray);
                 drawBoard();
