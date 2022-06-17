@@ -6,6 +6,13 @@
     font-family: sans-serif;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
 .grid {
     display: grid;
     width: 500px;
