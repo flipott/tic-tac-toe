@@ -26,13 +26,16 @@ const game = (function() {
     function gameController() {
         gameBtn.addEventListener("click", function() {
             if (gameBtn.textContent === "Start Game") {
+                gameBtn.style.backgroundColor = "lightcoral";
                 playerOne  = playerCreate(document.getElementById('first-player').value, "x");
                 playerTwo = playerCreate(document.getElementById('second-player').value, "o");
                 document.getElementById('first-player').disabled = true;
                 document.getElementById('second-player').disabled = true;
                 displayMove();
                 playerDisplay.textContent = `It is ${playerOne.name}'s turn.`
+                playerDisplay.style.fontWeight = "normal";
             } else {
+                gameBtn.style.backgroundColor = "lightgreen";
                 boardArray = ['', '', '', '', '', '', '', '', '']
                 gameBtn.textContent = "Start Game";
                 document.getElementById('first-player').disabled = false;
@@ -72,7 +75,8 @@ const game = (function() {
         winCombos = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [6,4,2], [8,4,0]];
         for (let i=0;i<winCombos.length;i++) {
             if (boardArray[winCombos[i][0]] === player.position && boardArray[winCombos[i][1]] === player.position && boardArray[winCombos[i][2]] === player.position ) {
-                playerDisplay.textContent = player.name + " wins!!!";
+                playerDisplay.textContent = player.name + " wins!";
+                playerDisplay.style.fontWeight = "bold";
                 return winner = true;
             } 
         }
