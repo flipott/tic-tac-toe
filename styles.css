@@ -3,7 +3,43 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
-    font-family: sans-serif;
+    font-family: 'Paytone One', sans-serif;
+    font-family: 'Vazirmatn', sans-serif;}
+
+html, body {
+    height: 100%;
+    background: slategray;
+}
+
+.header {
+    font-family: 'Paytone One';
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.player-form {
+    margin: 20px;
+}
+
+#game-btn {
+    font-family: 'Vazirmatn';
+    margin: 0 0 20px 0;
+    border: none;
+    padding: 8px 20px;
+    width: 150px;
+    font-weight: bold;
+    background: lightgreen;
+}
+
+.player-display {
+    font-family: 'Vazirmatn';
+    font-size: 1.25rem;
+    min-height: 30px;
+    margin-bottom: 25px;
+}
+
+input {
+    text-align: center;
 }
 
 .container {
@@ -28,4 +64,5 @@
     align-items: center;
     justify-content: center;
     font-size: 6rem;
+    color: white;
 }
