@@ -1,7 +1,12 @@
-# tic-tac-toe
+# Tic-Tac-Toe
 
-Live page viewable at https://flipott.github.io/tic-tac-toe/
+A JavaScript recreation of the classic game. Demonstrates use of factory functions and modules.
 
-A basic tic-tac-toe game built with JS, HTML, and CSS.
+Live page viewable here: https://flipott.github.io/tic-tac-toe/
 
-Demonstrates use of factory functions and modules in JavaScript.
+# Features
+- Customizable player names
+- Dynamic game messages
+
+# Tools Used
+[![My Skills](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev)
